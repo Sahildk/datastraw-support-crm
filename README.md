@@ -119,17 +119,16 @@ npm install
 
 ### 2. Configure Environment Variables
 
-Create a `.env` file in the project root **and** in the `backend/` directory with your Supabase credentials:
+Create a single `.env` file in the project root containing credentials for both frontend and backend:
 
 ```env
+# Backend variables
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your-anon-key
+
+# Frontend variables (Vite requires VITE_ prefix)
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
-```
-
-```env
-# backend/.env
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_KEY=your-service-role-key
 ```
 
 ### 3. Set Up Python Backend
