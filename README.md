@@ -192,8 +192,7 @@ datastraw-support-crm/
 ├── backend/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI app with static mount & endpoints
-│   ├── requirements.txt     # Backend Python dependencies
-│   └── .env                 # Backend Supabase credentials
+│   └── requirements.txt     # Backend Python dependencies
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -213,9 +212,9 @@ datastraw-support-crm/
 │   ├── tailwind.config.js        # Tailwind theme customisation
 │   ├── eslint.config.js          # ESLint rules
 │   ├── postcss.config.js         # PostCSS config
-│   ├── package.json              # Frontend npm dependencies & scripts
-│   └── .env                      # Frontend Supabase credentials
+│   └── package.json              # Frontend npm dependencies & scripts
 ├── package.json                  # Root npm scripts (dev/api/build proxies)
+├── .env                          # Shared Supabase credentials (frontend + backend)
 ├── Procfile                      # Railway start process configuration
 ├── nixpacks.toml                 # Nixpacks multi-runtime specification
 ├── railway.json                  # Railway custom build phases
