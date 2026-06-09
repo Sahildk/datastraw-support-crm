@@ -64,7 +64,7 @@ export default function Dashboard({ tickets, onViewTickets }) {
   return (
     <div className="space-y-6">
       {/* Metrics Banner */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => {
           const Icon = stat.icon;
           return (
@@ -177,7 +177,7 @@ export default function Dashboard({ tickets, onViewTickets }) {
 
       {/* Action panel */}
       {highPriority > 0 && (
-        <div className="p-4 bg-rose-500/5 border border-rose-500/15 rounded-2xl flex items-center justify-between gap-4 animate-pulse">
+        <div className="p-4 bg-rose-500/5 border border-rose-500/15 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20">
               <AlertCircle className="h-5 w-5" />

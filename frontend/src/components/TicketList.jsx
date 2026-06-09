@@ -6,9 +6,9 @@ export default function TicketList({ tickets, loading, activeTicketId, onSelectT
     return (
       <div className="flex flex-col gap-3">
         {[1, 2, 3].map(i => (
-          <div key={i} className="glass-panel p-5 animate-pulse flex items-center justify-between border-zinc-800/50">
+          <div key={i} className="glass-panel p-5 animate-pulse flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-zinc-800/50">
             <div className="space-y-3 flex-1">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <div className="h-4 w-16 bg-zinc-800 rounded"></div>
                 <div className="h-3.5 w-12 bg-zinc-800 rounded-full"></div>
                 <div className="h-3.5 w-16 bg-zinc-800 rounded-full"></div>
@@ -16,7 +16,7 @@ export default function TicketList({ tickets, loading, activeTicketId, onSelectT
               <div className="h-4 w-2/3 bg-zinc-800 rounded"></div>
               <div className="h-3 w-40 bg-zinc-800/60 rounded"></div>
             </div>
-            <div className="h-7 w-20 bg-zinc-800 rounded-full"></div>
+            <div className="h-7 w-20 bg-zinc-800 rounded-full shrink-0"></div>
           </div>
         ))}
       </div>

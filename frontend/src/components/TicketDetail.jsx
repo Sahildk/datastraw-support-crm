@@ -113,7 +113,7 @@ export default function TicketDetail({ ticketId, onClose }) {
   };
 
   return (
-    <div className="glass-panel p-6 flex flex-col h-[calc(100vh-140px)] sticky top-6 justify-between shadow-2xl">
+    <div className="glass-panel p-6 flex flex-col h-auto min-h-[500px] lg:h-[calc(100vh-140px)] lg:sticky lg:top-6 justify-between shadow-2xl">
       {/* Scrollable Workspace Container */}
       <div className="overflow-y-auto pr-1 space-y-6 flex-1 custom-scrollbar">
         

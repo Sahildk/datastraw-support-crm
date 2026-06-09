@@ -26,6 +26,9 @@ export default function App() {
   // Form Drawer Toggle State
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  // Mobile Sidebar Toggle State
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const navigate = useNavigate();
 
   // Load tickets on mount
@@ -93,12 +96,39 @@ export default function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#08080a] text-zinc-100 overflow-hidden">
-      {/* Persistent Left Sidebar Navigation */}
-      <Sidebar syncStatus={syncStatus} isSyncing={isSyncing} />
+    <div className="flex min-h-screen bg-[#08080a] text-zinc-100 overflow-hidden relative">
+      {/* Persistent/Responsive Left Sidebar Navigation */}
+      <Sidebar 
+        syncStatus={syncStatus} 
+        isSyncing={isSyncing} 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+      />
 
       {/* Main Panel Area */}
-      <div className="flex-1 h-screen overflow-y-auto px-8 py-6 flex flex-col justify-between custom-scrollbar">
+      <div className="flex-1 h-screen overflow-y-auto px-4 py-4 md:px-8 md:py-6 flex flex-col justify-between custom-scrollbar">
+        {/* Mobile Header Bar */}
+        <div className="md:hidden flex items-center justify-between pb-4 border-b border-zinc-800/60 mb-4 shrink-0">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="text-zinc-400 hover:text-zinc-200 bg-zinc-900 border border-zinc-800 p-2 rounded-xl transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold text-white tracking-tight leading-none">Datastraw</span>
+              <span className="text-[9px] bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 px-1 py-0.5 rounded font-semibold">CRM</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5 p-1.5 bg-[#121214] border border-zinc-800/80 rounded-lg text-[10px] text-zinc-400 font-semibold max-w-[150px] truncate">
+            <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${syncStatus.includes('Connected') || syncStatus.includes('Change') ? 'bg-emerald-500' : 'bg-amber-500'} animate-pulse`} />
+            <span className="truncate">{syncStatus}</span>
+          </div>
+        </div>
+
         <main className="mb-8">
           <Routes>
             {/* Dashboard Control Center */}
@@ -125,7 +155,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   
                   {/* Left Ticket List Desk Panel */}
-                  <div className={`${selectedTicketId ? 'lg:col-span-7' : 'lg:col-span-12'} space-y-4 transition-all duration-300`}>
+                  <div className={`${selectedTicketId ? 'hidden lg:block lg:col-span-7' : 'block lg:col-span-12'} space-y-4 transition-all duration-300`}>
                     <div className="flex justify-between items-center pb-2">
                       <div>
                         <h2 className="text-xl font-bold text-white tracking-tight">Support Desk Workspace</h2>
@@ -153,7 +183,7 @@ export default function App() {
 
                   {/* Right Detail Workspace Drawer */}
                   {selectedTicketId && (
-                    <div className="lg:col-span-5 h-fit">
+                    <div className="block lg:col-span-5 h-fit">
                       <TicketDetail 
                         ticketId={selectedTicketId} 
                         onClose={() => setSelectedTicketId(null)}
@@ -168,7 +198,7 @@ export default function App() {
         </main>
 
         {/* Global Footer */}
-        <footer className="text-[10px] text-zinc-550 border-t border-zinc-800/40 pt-4 flex items-center justify-between mt-auto">
+        <footer className="text-[10px] text-zinc-500 border-t border-zinc-800/40 pt-4 flex flex-col sm:flex-row gap-2 items-center justify-between mt-auto">
           <span>Datastraw CRM Support Desk v2.0</span>
           <span>© 2026 Datastraw Technologies</span>
         </footer>
